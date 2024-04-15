@@ -34,7 +34,7 @@ To use this application, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/chunks-to-file.git
+   git clone https://github.com/isaka-james/chunks-to-file.git
    ```
 
 2. Install dependencies:
