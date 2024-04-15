@@ -27,6 +27,10 @@ In many scenarios, uploading large files to a server can be challenging due to l
 - Accepts all types of files.
 - Simple and easy-to-use interface.
 
+
+### Simplified Pros Commentary:
+>*JavaScript on front-end divides the user's selected file into smaller segments and transmits them simultaneously to the server through the `/documents` route. These segments are then stored in a temporary location known as `temps` folder on the server. Following successful storage, the browser prompts the server to aggregate these segments via the `/combine` route. Utilizing binary methods, the server adeptly merges the segmented data, On completion, file being will be securely stored within the `uploads` directory. So, all the broken pieces of data come together nicely to make one complete file on the server.*
+
 ## Installation
 
 To use this application, follow these steps:
@@ -37,12 +41,15 @@ To use this application, follow these steps:
    git clone https://github.com/isaka-james/chunks-to-file.git
    ```
 
-2. Install dependencies:
+2. Enter into the project folder:
 
    ```bash
    cd chunks-to-file
-   npm install
    ```
+3. Install the dependencies:
+```bash
+   npm install
+```
 
 ## Usage
 
