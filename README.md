@@ -1,8 +1,13 @@
 <div align="center">
 <h1 align="center"> Chunks to File - NodeJs Application </h1>
 
-<img src="https://cdn.freebiesupply.com/logos/large/2x/nodejs-1-logo-png-transparent.png" alt="Project Image" width="200">
+<img  src="https://cdn.freebiesupply.com/logos/large/2x/nodejs-1-logo-png-transparent.png" alt="Project Image" width="200">
+<br/>
+<img align="center"  src="https://komarev.com/ghpvc/?username=chunks-to-file&label=Chunks%20To%20File&color=0e75b6&style=flat" alt="since 16 April,2024" />
+
 </div>
+<br/>
+
 
 A Node.js application for uploading file chunks and combining them into a single file on the server.
 
