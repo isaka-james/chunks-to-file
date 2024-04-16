@@ -6,8 +6,23 @@ const { promisify } = require('util');
 
 const app = express();
 
-// Serve static files (like HTML files)
+// The folder having the views
 app.use(express.static(path.join(__dirname, 'views')));
+
+// The folder containing the static files
+const publicDirectoryPath = path.join(__dirname, 'public');
+
+// Handling the MIME types for CSS and JS files
+app.use(express.static(publicDirectoryPath, {
+    setHeaders: (res, filePath, stat) => {
+        if (filePath.endsWith('.js')) {
+            res.set('Content-Type', 'text/javascript');
+        } else if (filePath.endsWith('.css')) {
+            res.set('Content-Type', 'text/css');
+        }
+    }
+}));
+
 
 // Define routes
 app.get('/', (req, res) => {
@@ -37,6 +52,10 @@ const appendFile = promisify(fs.appendFile);
 // Route for receiving file chunks
 app.post('/documents', upload.single('file'), (req, res) => {
     console.log(`Chunk "${req.body.chunkNumber}" received successfully`);
+
+    // Here if you have the database you can use it to store the files that have been saved in the 'temps' folder
+    //..
+
     res.send(`Chunk "${req.body.chunkNumber}" received successfully`);
 
 });
@@ -48,14 +67,18 @@ app.get('/combine', upload.array('files'), async (req, res) => {
     const uploadFolder = 'uploads/';
     const combinedFileName = req.query.filename;
 
+    // Combine is very easy if you have database like reddis!
+    //..
+
+
     try {
         // Read all files in the temps folder
         const files = await readdir(tempFolder);
 
         // Sort files based on their names
         files.sort((a, b) => {
-            const numA = parseInt(a.split('-')[0]);
-            const numB = parseInt(b.split('-')[0]);
+            const numA = parseInt(a.split('-.-.')[0]);
+            const numB = parseInt(b.split('-.-.')[0]);
             return numA - numB;
         });
 
