@@ -11,6 +11,8 @@
 
 A Node.js application for uploading file chunks and combining them into a single file on the server.
 
+Speeding your application **5x Faster** than the uploading you are currently using!.
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -35,6 +37,10 @@ In many scenarios, uploading large files to a server can be challenging due to l
 
 ### Simplified Pros Commentary:
 >*JavaScript on front-end divides the user's selected file into smaller segments and transmits them simultaneously to the server through the `/documents` route. These segments are then stored in a temporary location known as `temps` folder on the server. Following successful storage, the browser prompts the server to aggregate these segments via the `/combine` route. Utilizing binary methods, the server adeptly merges the segmented data, On completion, file being will be securely stored within the `uploads` directory. So, all the broken pieces of data come together nicely to make one complete file on the server.*
+
+### Preview:
+>![image](https://github.com/isaka-james/chunks-to-file/assets/76619967/ce76e9c8-4b7f-4d2a-beb6-e595e9af665a)
+
 
 ## Installation
 
