@@ -70,6 +70,12 @@ app.get('/combine', upload.array('files'), async (req, res) => {
     // Combine is very easy if you have database like reddis!
     //..
 
+    /*              >>>>>>>>>>>>>>>>>>>  TRICK  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+     *  If you like using DATABASE, when the user upload the chunks you save them to your server and also,
+     *  to your database with their chunkNumber so when he come here you just retrieve from database and combine them.
+     *  Remember I didn't delete the chunks but you may delete them if you want!
+    */
+
 
     try {
         // Read all files in the temps folder
