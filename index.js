@@ -67,12 +67,12 @@ app.get('/combine', upload.array('files'), async (req, res) => {
     const uploadFolder = 'uploads/';
     const combinedFileName = req.query.filename;
 
-    // Combine is very easy if you have database like reddis!
+    // Combine is very easy if you have a database like Redis!
     //..
 
     /*              >>>>>>>>>>>>>>>>>>>  TRICK  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-     *  If you like using DATABASE, when the user upload the chunks you save them to your server and also,
-     *  to your database with their chunkNumber so when he come here you just retrieve from database and combine them.
+     *  If you like using a DATABASE, when the user uploads the chunks you save them to your server and also,
+     *  to your database with their chunkNumber so when he comes here you just retrieve from the database and combine them.
      *  Remember I didn't delete the chunks but you may delete them if you want!
     */
 
@@ -81,15 +81,18 @@ app.get('/combine', upload.array('files'), async (req, res) => {
         // Read all files in the temps folder
         const files = await readdir(tempFolder);
 
-        // Sort files based on their names
-        files.sort((a, b) => {
+        // Filter out only the files with the format `${number}-.-.${combinedFileName}`
+        const numberedFiles = files.filter(file => /^\d+-\.-\..+$/.test(file) && file.includes(combinedFileName));
+
+        // Sort files based on the numbers before `-.-.` in their names
+        numberedFiles.sort((a, b) => {
             const numA = parseInt(a.split('-.-.')[0]);
             const numB = parseInt(b.split('-.-.')[0]);
             return numA - numB;
         });
 
         // Combine files into a single PDF
-        for (const file of files) {
+        for (const file of numberedFiles) {
             const filePath = path.join(tempFolder, file);
             const data = await readFile(filePath);
             await appendFile(path.join(uploadFolder, combinedFileName), data);
