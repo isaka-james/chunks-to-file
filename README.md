@@ -26,6 +26,16 @@ Speeding your application **5x Faster** than the uploading you are currently usi
 
 In many scenarios, uploading large files to a server can be challenging due to limitations in file size or network conditions. This project provides a solution by allowing the client to split a large file into smaller chunks and upload them individually to the server. Once all chunks are received, the server combines them into a single file.
 
+<details>
+<summary><h3></h3><b>Click to see how it works:</b></h3></summary>
+  <p>
+    <a href="https://github.com/isaka-james/top">
+      <img src="https://github.com/isaka-james/chunks-to-file/assets/76619967/9b2b0c89-c608-4fbc-8320-1fa0e6fabce1" width="900"/>
+    </a>
+  </p>
+</details>
+
+
 ## Features
 
 - Split large files into smaller chunks for easier uploading.
